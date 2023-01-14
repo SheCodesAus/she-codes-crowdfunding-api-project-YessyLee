@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Project
+from .models import Project, Pledge
 
 class ProjectSerializer(serializers.Serializer):
     id = serializers.ReadOnlyField()
@@ -13,3 +13,8 @@ class ProjectSerializer(serializers.Serializer):
     
     def create(self, validated_data): #validated data is the dictionary function
         return Project.objects.create(**validated_data) #asterisk is to return the pair key value
+    
+class PledgeSerializer(serializers.ModelSerializer):
+    class Meta: #define how the model form work
+        model = Pledge
+        fields = ['id', 'amount', 'comment', 'anonymous', 'project', 'supporter']
