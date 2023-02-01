@@ -33,13 +33,17 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'projects.apps.ProjectsConfig',
     'rest_framework',
+    'rest_framework.authtoken',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users.apps.UsersConfig',
 ]
+
+AUTH_USER_MODEL = 'users.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -52,6 +56,14 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'crowdfunding.urls'
+
+#DOES IT MATTER WHERE THIS ONE POSITIONED???
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+    	   'rest_framework.authentication.TokenAuthentication',
+    	   'rest_framework.authentication.SessionAuthentication',
+    ]
+}
 
 TEMPLATES = [
     {
