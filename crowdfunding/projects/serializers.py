@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import Project, Pledge     
+from .models import Project, Pledge
+from users.serializers import CustomUserSerializer     
   
 class ProjectSerializer(serializers.Serializer):
 	id = serializers.ReadOnlyField()
@@ -11,7 +12,7 @@ class ProjectSerializer(serializers.Serializer):
 	date_created = serializers.DateTimeField()
 	owner = serializers.ReadOnlyField(source="owner_id") #call owner id
 
-	def create(self, validated_data): #validated data is the dictionary function
+	def create(self, validated_data): #validated data in the dictionary function
 		return Project.objects.create(**validated_data) #asterisk is to return the pair key value
 	
 	def update(self, instance, validated_data):
@@ -26,10 +27,22 @@ class ProjectSerializer(serializers.Serializer):
 		return instance
 	
 class PledgeSerializer(serializers.ModelSerializer):
-	class Meta: #define how the model form work
-		model = Pledge
-		fields = ['id', 'amount', 'comment', 'anonymous', 'project', 'supporter']
-		read_only_fields = ['id', 'supporter']
+    
+    supporter = serializers.SerializerMethodField()
+    class Meta: #define how the model form work
+        model = Pledge
+        fields = ['id', 'amount', 'comment', 'anonymous', 'project', 'supporter']
+        read_only_fields = ['id', 'supporter']
+        
+    def get_supoorter(self, obj):
+        if obj.anonymous:
+            return None
+        else:
+            return obj.supporter.username
+        
+    def create(self, validated_data):
+        return Pledge.objects.create(**validated_data)
 
 class ProjectDetailSerializer(ProjectSerializer):
 	pledges = PledgeSerializer(many=True, read_only=True)
+ 

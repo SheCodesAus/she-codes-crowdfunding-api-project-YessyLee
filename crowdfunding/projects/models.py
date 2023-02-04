@@ -17,11 +17,15 @@ class Project(models.Model):
         related_name="owner_projects" #related_name link backward
         )
     
+    @property
+    def total(self):
+        return self.pledges.aggregate(sum=models.Sum('amount'))['sum']
+    
 class Pledge(models.Model):
     amount = models.IntegerField()
     comment = models.CharField(max_length=200)
     anonymous = models.BooleanField()
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='pledges')
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="pledges")
     supporter = models.ForeignKey(
         User,
         on_delete=models.CASCADE,

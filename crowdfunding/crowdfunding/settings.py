@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+
 import os
 from pathlib import Path
 
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'projects.apps.ProjectsConfig',
     'rest_framework',
     'rest_framework.authtoken',
+    'django_filters',
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -66,14 +68,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'crowdfunding.urls'
-
-#DOES IT MATTER WHERE THIS ONE POSITIONED???
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-    	   'rest_framework.authentication.TokenAuthentication',
-    	   'rest_framework.authentication.SessionAuthentication',
-    ]
-}
 
 TEMPLATES = [
     {
@@ -146,3 +140,11 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#DOES IT MATTER WHERE THIS ONE POSITIONED???
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+    	   'rest_framework.authentication.TokenAuthentication',
+    	   'rest_framework.authentication.SessionAuthentication',
+    ]
+}

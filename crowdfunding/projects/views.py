@@ -2,21 +2,31 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import Http404
-from rest_framework import status, generics, permissions
+from rest_framework import status, generics, permissions, filters
+from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import Project, Pledge
 from .serializers import ProjectSerializer, PledgeSerializer, ProjectDetailSerializer
-from .permissions import IsOwnerOrReadOnly
+from .permissions import IsOwnerOrReadOnly, IsSupporterOrReadOnly
 
 
 # Create your views here.
-class ProjectList(APIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    
-    def get(self, request):
-        projects = Project.objects.all()
-        serializer = ProjectSerializer(projects, many=True) #given many of the lists
-        return Response(serializer.data)
+# class ProjectList(APIView):
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    # 
+    # def get(self, request):
+        # projects = Project.objects.all()
+        # serializer = ProjectSerializer(projects, many=True) #given many of the lists
+        # return Response(serializer.data)
+    # 
+class ProjectList(generics.ListCreateAPIView):
+
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter,]
+    filterset_fields = ["owner", "is_open"]
+    search_fields = ["title", "description"]
+  
     
     def post(self, request):
         serializer = ProjectSerializer(data=request.data)
@@ -50,7 +60,7 @@ class ProjectDetail(APIView):
         serializer = ProjectDetailSerializer(
             instance=project,
             data=data,
-                partial=True
+            partial=True
         )
         if serializer.is_valid():
             serializer.save()
@@ -60,8 +70,18 @@ class ProjectDetail(APIView):
 class PledgeList(generics.ListCreateAPIView):
     queryset = Pledge.objects.all()
     serializer_class = PledgeSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ["supporter",]
     
     def perform_create(self, serializer):
         serializer.save(supporter=self.request.user)
 
-    
+class PledgeDetailView(generics.RetrieveUpdateDestroyAPIView):
+
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly,
+        IsSupporterOrReadOnly
+        ]
+
+    queryset = Pledge.objects.all()
+    serializer_class = PledgeSerializer
