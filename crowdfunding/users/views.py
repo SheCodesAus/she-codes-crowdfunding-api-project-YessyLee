@@ -43,7 +43,7 @@ class ChangePasswordView(generics.UpdateAPIView):
     An endpoint for changing password.
     """
     serializer_class = ChangePasswordSerializer
-    model = User
+    model = CustomUser
     permission_classes = (IsAuthenticated,)
 
     def get_object(self, queryset=None):
@@ -67,7 +67,7 @@ class ChangePasswordView(generics.UpdateAPIView):
                 'message': 'Password updated successfully',
                 'data': []
             }
-
+            
             return Response(response)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
