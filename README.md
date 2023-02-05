@@ -1,6 +1,6 @@
 # Title: FutureProofME
 
-{{ This is a crowdfunding app for people looking to upskill and transform their career quickly through short courses, bootcamps, masterclasses etc. These courses are usually not funded by HECS, hence requesting the fund through crowdfunding would be ideal. Form of payment would be monetary donation. Donation will be released to the education institution at the end of the projects closed date }}
+This is a crowdfunding app for people looking to upskill and transform their career quickly through short courses, bootcamps, masterclasses etc. These courses are usually not funded by HECS, hence requesting the fund through crowdfunding would be ideal. Form of payment would be monetary donation. Donation will be released to the education institution at the end of the projects closed date.
 
 ## Features
 
@@ -35,7 +35,7 @@
   - [X] Create
   - [X] Retrieve
   - [X] Update
-  - [ ] Destroy - I will likely to implement "CLOSE" instead of Destroy, in case there are portion of money been donated, which can be returned to supporters if the owners decided not to go ahead with the study.
+  - [ ] Destroy - I will likely implement "CLOSE" instead of Destroy, in case there are portion of money been donated, which can be returned to supporters if the owners decided not to go ahead with the study.
 - Pledge
   - [X] Create
   - [X] Retrieve
@@ -90,7 +90,7 @@ Users have the ability to change password
 
 Everyone has the ability to search across projects
 
-- [ ] {Title Feature 3}
+- [ ] {Title Feature 3} - To be confirmed
 
 {{ description of feature 3 }}
 
@@ -99,7 +99,9 @@ Everyone has the ability to search across projects
 - [X] django-filter
 
 
-## Part A Submission (Please see PDF called "Submission Docs for DRF - Yessy Rayner" saved in this repo"
+## Part A Submission 
+
+Please see PDF called "Submission Docs for DRF - Yessy Rayner" saved in this repo.
 
 - [X] A link to the deployed project.
 - [X] A screenshot of Insomnia, demonstrating a successful GET method for any endpoint.
