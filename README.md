@@ -53,18 +53,18 @@ This is a crowdfunding app for people looking to upskill and transform their car
 
 - Project
   - [X] Limit who can create
-  - [ ] Limit who can retrieve
+  - [ ] Limit who can retrieve - - everyone can view but unable to do anything else
   - [X] Limit who can update
   - [X] Limit who can delete
 - Pledge
   - [X] Limit who can create
-  - [ ] Limit who can retrieve
+  - [ ] Limit who can retrieve - - everyone can view but unable to do anything else
   - [X] Limit who can update
-  - [ ] Limit who can delete
+  - [X] Limit who can delete
 - Pledge
-  - [ ] Limit who can retrieve
+  - [ ] Limit who can retrieve - everyone can view but unable to do anything else
   - [X] Limit who can update
-  - [ ] Limit who can delete
+  - [X] Limit who can delete
 
 ### Implement relevant status codes
 
