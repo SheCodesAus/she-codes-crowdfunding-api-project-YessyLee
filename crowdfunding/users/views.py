@@ -46,9 +46,14 @@ class ChangePasswordView(generics.UpdateAPIView):
     model = CustomUser
     permission_classes = (IsAuthenticated,)
 
+    #ensuring the right user logged in first
     def get_object(self, queryset=None):
         obj = self.request.user
         return obj
+    
+    #get the display work properly on the screen/url
+    def get(self, request, *args, **kwargs):
+        return Response({"message":f"Ok, let's change your password {self.request.user.username}"})
 
     def update(self, request, *args, **kwargs):
         self.object = self.get_object()
