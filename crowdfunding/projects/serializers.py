@@ -34,7 +34,7 @@ class PledgeSerializer(serializers.ModelSerializer):
         fields = ['id', 'amount', 'comment', 'anonymous', 'project', 'supporter']
         read_only_fields = ['id', 'supporter']
         
-    def get_supoorter(self, obj):
+    def get_supporter(self, obj):
         if obj.anonymous:
             return None
         else:
