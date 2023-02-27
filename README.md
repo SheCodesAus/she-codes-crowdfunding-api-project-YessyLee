@@ -1,6 +1,6 @@
-# {{ my project title }}
+# Title: FutureProofME
 
-{{ a paragraph detailing the purpose and target audience }}
+This is a crowdfunding app for people looking to upskill and transform their career quickly through short courses, bootcamps, masterclasses etc. These courses are usually not funded by HECS, hence requesting the fund through crowdfunding would be ideal. Form of payment would be monetary donation. Donation will be released to the education institution at the end of the projects closed date.
 
 ## Features
 
@@ -34,78 +34,80 @@
 - Project
   - [X] Create
   - [X] Retrieve
-  - [ ] Update
-  - [ ] Destroy
+  - [X] Update
+  - [ ] Destroy - I will likely implement "CLOSE" instead of Destroy, in case there are portion of money been donated, which can be returned to supporters if the owners decided not to go ahead with the study.
 - Pledge
   - [X] Create
   - [X] Retrieve
-  - [ ] Update
-  - [ ] Destroy
+  - [X] Update
+  - [ ] Destroy - Not implementing this, due to the same reason as above
 - User
-  - [ ] Create
+  - [X] Create
   - [X] Retrieve
-  - [ ] Update
-  - [ ] Destroy
+  - [X] Update - Password
+  - [ ] Destroy - Will implement close account perhaps - Admin has the ability to Destroy
 
 ### Implement suitable permissions
 
 **Note: Not all of these may be required for your project, if you have not included one of these please justify why.**
 
 - Project
-  - [ ] Limit who can create
-  - [ ] Limit who can retrieve
-  - [ ] Limit who can update
-  - [ ] Limit who can delete
+  - [X] Limit who can create
+  - [ ] Limit who can retrieve - - everyone can view but unable to do anything else
+  - [X] Limit who can update
+  - [X] Limit who can delete
 - Pledge
-  - [ ] Limit who can create
-  - [ ] Limit who can retrieve
-  - [ ] Limit who can update
-  - [ ] Limit who can delete
+  - [X] Limit who can create
+  - [ ] Limit who can retrieve - - everyone can view but unable to do anything else
+  - [X] Limit who can update
+  - [X] Limit who can delete
 - Pledge
-  - [ ] Limit who can retrieve
-  - [ ] Limit who can update
-  - [ ] Limit who can delete
+  - [ ] Limit who can retrieve - everyone can view but unable to do anything else
+  - [X] Limit who can update
+  - [X] Limit who can delete
 
 ### Implement relevant status codes
 
-- [ ] Get returns 200
-- [ ] Create returns 201
-- [ ] Not found returns 404
+- [X] Get returns 200
+- [X] Create returns 201
+- [X] Not found returns 404
 
 ### Handle failed requests gracefully 
 
-- [ ] 404 response returns JSON rather than text
+- [X] 404 response returns JSON rather than text
 
 ### Use token authentication
 
-- [X] impliment /api-token-auth/
+- [X] implement /api-token-auth/
 
 ## Additional features
 
-- [ ] {Title Feature 1}
+- [X] Update Password
 
-{{ description of feature 1 }}
+Users have the ability to change password
 
-- [ ] {Title Feature 2}
+- [X] Filtering/Global Search on Project
 
-{{ description of feature 2 }}
+Everyone has the ability to search across projects
 
-- [ ] {Title Feature 3}
+- [ ] {Title Feature 3} - To be confirmed
 
 {{ description of feature 3 }}
 
 ### External libraries used
 
-- [ ] django-filter
+- [X] django-filter
 
 
-## Part A Submission
+## Part A Submission 
 
-- [ ] A link to the deployed project.
-- [ ] A screenshot of Insomnia, demonstrating a successful GET method for any endpoint.
-- [ ] A screenshot of Insomnia, demonstrating a successful POST method for any endpoint.
-- [ ] A screenshot of Insomnia, demonstrating a token being returned.
-- [ ] Your refined API specification and Database Schema.
+Please see PDF called "Submission Docs for DRF - Yessy Rayner" saved in this repo.
+
+- [X] A link to the deployed project.
+- [X] A screenshot of Insomnia, demonstrating a successful GET method for any endpoint.
+- [X] A screenshot of Insomnia, demonstrating a successful POST method for any endpoint.
+- [X] A screenshot of Insomnia, demonstrating a token being returned.
+- [X] Your refined API specification and Database Schema.
 
 ### Step by step instructions for how to register a new user and create a new project (i.e. endpoints and body data).
 
