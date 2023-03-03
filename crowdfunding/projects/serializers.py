@@ -10,7 +10,8 @@ class ProjectSerializer(serializers.Serializer):
 	image = serializers.URLField()
 	is_open = serializers.BooleanField()
 	date_created = serializers.DateTimeField()
-	owner = serializers.ReadOnlyField(source="owner_id") #call owner id
+	owner = serializers.ReadOnlyField(source="owner_id") #call owner idowner = serializers.SerializerMethodField()
+	total = serializers.IntegerField()
 
 	def create(self, validated_data): #validated data in the dictionary function
 		return Project.objects.create(**validated_data) #asterisk is to return the pair key value

@@ -36,8 +36,10 @@ class CustomUserDetail(APIView):
         user = self.get_object(pk)
         serializer = CustomUserSerializer(user)
         return Response(serializer.data)
+    
+    # def update - ability to update user details
 
-#found these codes on https://studygyaan.com/django/django-rest-framework-tutorial-change-password-and-reset-password    
+#Code inspo from https://studygyaan.com/django/django-rest-framework-tutorial-change-password-and-reset-password    
 class ChangePasswordView(generics.UpdateAPIView):
     """
     An endpoint for changing password.
