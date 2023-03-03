@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Project, Pledge
-from users.serializers import CustomUserSerializer     
+# from users.serializers import CustomUserSerializer     
   
 class ProjectSerializer(serializers.Serializer):
 	id = serializers.ReadOnlyField()
@@ -46,5 +46,5 @@ class PledgeSerializer(serializers.ModelSerializer):
 
 class ProjectDetailSerializer(ProjectSerializer):
 	pledges = PledgeSerializer(many=True, read_only=True)
-	liked_by = CustomUserSerializer(many=True, read_only=True)
- 
+	# liked_by = CustomUserSerializer(many=True, read_only=True)
+#  
