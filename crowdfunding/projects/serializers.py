@@ -11,7 +11,7 @@ class ProjectSerializer(serializers.Serializer):
 	is_open = serializers.BooleanField()
 	date_created = serializers.DateTimeField()
 	owner = serializers.ReadOnlyField(source="owner_id") #call owner idowner = serializers.SerializerMethodField()
-	total = serializers.IntegerField()
+	total = serializers.ReadOnlyField()
 
 	def create(self, validated_data): #validated data in the dictionary function
 		return Project.objects.create(**validated_data) #asterisk is to return the pair key value
