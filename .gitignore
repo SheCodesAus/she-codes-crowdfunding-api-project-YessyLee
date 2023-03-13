@@ -1,6 +1,8 @@
 venv/
 .venv/
 __pycache__/
+*.py[cod]
+*$py.class
 .DS_Store
 *.sqlite3
 *.vscode
